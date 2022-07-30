@@ -1,0 +1,286 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Scenes and Scripts/Main.gd" type="Script" id=1]
+[ext_resource path="res://Assets/Tiles/Mafic.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Tiles/Felsic.png" type="Texture" id=3]
+[ext_resource path="res://Assets/Tiles/Intermediate.png" type="Texture" id=4]
+[ext_resource path="res://Assets/Tiles/Ultra Mafic.png" type="Texture" id=5]
+
+[sub_resource type="TileSet" id=1]
+0/name = "Felsic.png 0"
+0/texture = ExtResource( 3 )
+0/tex_offset = Vector2( 0, 0 )
+0/modulate = Color( 1, 1, 1, 1 )
+0/region = Rect2( 0, 0, 16, 16 )
+0/tile_mode = 0
+0/occluder_offset = Vector2( 0, 0 )
+0/navigation_offset = Vector2( 0, 0 )
+0/shape_offset = Vector2( 0, 0 )
+0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+0/shape_one_way = false
+0/shape_one_way_margin = 0.0
+0/shapes = [  ]
+0/z_index = 0
+1/name = "Intermediate.png 1"
+1/texture = ExtResource( 4 )
+1/tex_offset = Vector2( 0, 0 )
+1/modulate = Color( 1, 1, 1, 1 )
+1/region = Rect2( 0, 0, 16, 16 )
+1/tile_mode = 0
+1/occluder_offset = Vector2( 0, 0 )
+1/navigation_offset = Vector2( 0, 0 )
+1/shape_offset = Vector2( 0, 0 )
+1/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+1/shape_one_way = false
+1/shape_one_way_margin = 0.0
+1/shapes = [  ]
+1/z_index = 0
+2/name = "Mafic.png 2"
+2/texture = ExtResource( 2 )
+2/tex_offset = Vector2( 0, 0 )
+2/modulate = Color( 1, 1, 1, 1 )
+2/region = Rect2( 0, 0, 16, 16 )
+2/tile_mode = 0
+2/occluder_offset = Vector2( 0, 0 )
+2/navigation_offset = Vector2( 0, 0 )
+2/shape_offset = Vector2( 0, 0 )
+2/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+2/shape_one_way = false
+2/shape_one_way_margin = 0.0
+2/shapes = [  ]
+2/z_index = 0
+3/name = "Ultra Mafic.png 3"
+3/texture = ExtResource( 5 )
+3/tex_offset = Vector2( 0, 0 )
+3/modulate = Color( 1, 1, 1, 1 )
+3/region = Rect2( 0, 0, 16, 16 )
+3/tile_mode = 0
+3/occluder_offset = Vector2( 0, 0 )
+3/navigation_offset = Vector2( 0, 0 )
+3/shape_offset = Vector2( 0, 0 )
+3/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+3/shape_one_way = false
+3/shape_one_way_margin = 0.0
+3/shapes = [  ]
+3/z_index = 0
+
+[node name="Main" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+
+[node name="TileMap" type="TileMap" parent="."]
+scale = Vector2( 2, 2 )
+tile_set = SubResource( 1 )
+cell_size = Vector2( 16, 16 )
+format = 1
+
+[node name="Camera2D" type="Camera2D" parent="."]
+offset = Vector2( 512, 300 )
+current = true
+
+[node name="ColorRect" type="ColorRect" parent="Camera2D"]
+margin_right = 243.0
+margin_bottom = 264.0
+color = Color( 0, 0, 0, 1 )
+
+[node name="Render" type="VBoxContainer" parent="Camera2D"]
+margin_right = 239.0
+margin_bottom = 177.0
+rect_min_size = Vector2( 240, 0 )
+
+[node name="Scroll Left" type="HBoxContainer" parent="Camera2D/Render"]
+margin_right = 240.0
+margin_bottom = 24.0
+
+[node name="Label" type="Label" parent="Camera2D/Render/Scroll Left"]
+margin_top = 5.0
+margin_right = 63.0
+margin_bottom = 19.0
+text = "Scroll Left"
+
+[node name="Scroll Left" type="CheckBox" parent="Camera2D/Render/Scroll Left"]
+margin_left = 67.0
+margin_right = 91.0
+margin_bottom = 24.0
+
+[node name="Camera Speed" type="HBoxContainer" parent="Camera2D/Render"]
+margin_top = 28.0
+margin_right = 240.0
+margin_bottom = 52.0
+
+[node name="Label" type="Label" parent="Camera2D/Render/Camera Speed"]
+margin_top = 5.0
+margin_right = 91.0
+margin_bottom = 19.0
+text = "Camera Speed"
+
+[node name="Camera Speed" type="LineEdit" parent="Camera2D/Render/Camera Speed"]
+margin_left = 95.0
+margin_right = 153.0
+margin_bottom = 24.0
+text = "1"
+expand_to_text_length = true
+
+[node name="Clear Once Used Tiles is Greater Than X" type="HBoxContainer" parent="Camera2D/Render"]
+margin_top = 56.0
+margin_right = 240.0
+margin_bottom = 87.0
+
+[node name="Label" type="Label" parent="Camera2D/Render/Clear Once Used Tiles is Greater Than X"]
+margin_right = 150.0
+margin_bottom = 31.0
+size_flags_horizontal = 3
+text = "Clear Once Used Tiles is Greater Than X"
+autowrap = true
+
+[node name="LineEdit" type="LineEdit" parent="Camera2D/Render/Clear Once Used Tiles is Greater Than X"]
+margin_left = 154.0
+margin_right = 212.0
+margin_bottom = 31.0
+text = "0"
+expand_to_text_length = true
+
+[node name="Check" type="CheckBox" parent="Camera2D/Render/Clear Once Used Tiles is Greater Than X"]
+margin_left = 216.0
+margin_right = 240.0
+margin_bottom = 31.0
+
+[node name="Clear Once FPS is Less Than X" type="HBoxContainer" parent="Camera2D/Render"]
+margin_top = 91.0
+margin_right = 240.0
+margin_bottom = 122.0
+
+[node name="Label" type="Label" parent="Camera2D/Render/Clear Once FPS is Less Than X"]
+margin_right = 150.0
+margin_bottom = 31.0
+size_flags_horizontal = 3
+text = "Clear Once FPS is Less Than X"
+autowrap = true
+
+[node name="LineEdit" type="LineEdit" parent="Camera2D/Render/Clear Once FPS is Less Than X"]
+margin_left = 154.0
+margin_right = 212.0
+margin_bottom = 31.0
+text = "0"
+expand_to_text_length = true
+
+[node name="Check" type="CheckBox" parent="Camera2D/Render/Clear Once FPS is Less Than X"]
+margin_left = 216.0
+margin_right = 240.0
+margin_bottom = 31.0
+
+[node name="Startup Time" type="HBoxContainer" parent="Camera2D/Render"]
+margin_top = 126.0
+margin_right = 240.0
+margin_bottom = 140.0
+
+[node name="Label" type="Label" parent="Camera2D/Render/Startup Time"]
+margin_right = 81.0
+margin_bottom = 14.0
+text = "Startup Time"
+
+[node name="Startup Time" type="Label" parent="Camera2D/Render/Startup Time"]
+margin_left = 85.0
+margin_right = 105.0
+margin_bottom = 14.0
+text = "0.0"
+
+[node name="Time Per Render" type="HBoxContainer" parent="Camera2D/Render"]
+margin_top = 144.0
+margin_right = 240.0
+margin_bottom = 158.0
+
+[node name="Label" type="Label" parent="Camera2D/Render/Time Per Render"]
+margin_right = 106.0
+margin_bottom = 14.0
+text = "Time Per Render"
+
+[node name="Time Per Render" type="Label" parent="Camera2D/Render/Time Per Render"]
+margin_left = 110.0
+margin_right = 118.0
+margin_bottom = 14.0
+text = "0"
+
+[node name="FPS" type="HBoxContainer" parent="Camera2D/Render"]
+margin_top = 162.0
+margin_right = 240.0
+margin_bottom = 176.0
+
+[node name="Label" type="Label" parent="Camera2D/Render/FPS"]
+margin_right = 26.0
+margin_bottom = 14.0
+text = "FPS:"
+
+[node name="FPS" type="Label" parent="Camera2D/Render/FPS"]
+margin_left = 30.0
+margin_right = 46.0
+margin_bottom = 14.0
+text = "10"
+
+[node name="Tiles On Map" type="HBoxContainer" parent="Camera2D/Render"]
+margin_top = 180.0
+margin_right = 240.0
+margin_bottom = 194.0
+
+[node name="Label" type="Label" parent="Camera2D/Render/Tiles On Map"]
+margin_right = 85.0
+margin_bottom = 14.0
+text = "Tiles on Map:"
+
+[node name="Tiles on Map" type="Label" parent="Camera2D/Render/Tiles On Map"]
+margin_left = 89.0
+margin_right = 97.0
+margin_bottom = 14.0
+text = "0"
+
+[node name="Used Tiles" type="HBoxContainer" parent="Camera2D/Render"]
+margin_top = 198.0
+margin_right = 240.0
+margin_bottom = 212.0
+
+[node name="Label" type="Label" parent="Camera2D/Render/Used Tiles"]
+margin_right = 71.0
+margin_bottom = 14.0
+text = "Used Tiles:"
+
+[node name="Used Tiles" type="Label" parent="Camera2D/Render/Used Tiles"]
+margin_left = 75.0
+margin_right = 83.0
+margin_bottom = 14.0
+text = "0"
+
+[node name="Setup" type="CenterContainer" parent="Camera2D"]
+margin_right = 1024.0
+margin_bottom = 600.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Camera2D/Setup"]
+margin_left = 451.0
+margin_top = 276.0
+margin_right = 573.0
+margin_bottom = 324.0
+
+[node name="Tile Scale" type="HBoxContainer" parent="Camera2D/Setup/VBoxContainer"]
+margin_right = 122.0
+margin_bottom = 24.0
+
+[node name="Label" type="Label" parent="Camera2D/Setup/VBoxContainer/Tile Scale"]
+margin_top = 5.0
+margin_right = 60.0
+margin_bottom = 19.0
+text = "Tile Scale"
+
+[node name="Tile Scale" type="LineEdit" parent="Camera2D/Setup/VBoxContainer/Tile Scale"]
+margin_left = 64.0
+margin_right = 122.0
+margin_bottom = 24.0
+text = "1"
+expand_to_text_length = true
+
+[node name="Setup Button" type="Button" parent="Camera2D/Setup/VBoxContainer"]
+margin_top = 28.0
+margin_right = 122.0
+margin_bottom = 48.0
+text = "Setup Tile Map"
+
+[connection signal="pressed" from="Camera2D/Setup/VBoxContainer/Setup Button" to="." method="_on_Setup_Button_pressed"]
